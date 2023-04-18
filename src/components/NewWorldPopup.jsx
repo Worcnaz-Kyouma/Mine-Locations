@@ -39,7 +39,8 @@ export default function NewWorldPopup(props){
                 <button onClick={() => props.popupActiveController(false)}>Cancel</button>
                 <button onClick={() => {
                     persistNewWorld();
-                    /*props.updateWorldList();*/
+                    props.updateWorldList();
+                    props.popupActiveController(false);
                 }}>Submit</button>
             </div>
         </div>
