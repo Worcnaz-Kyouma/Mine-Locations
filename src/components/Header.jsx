@@ -7,16 +7,22 @@ export default function Header(props){
     const [worldsList, setWorldsList] = useState(null);
     const [isPopupActive, setPopupActive] = useState(false);
 
-    useEffect(setWorldsListByAPI, []);
+    useEffect(() => {
+        let worldsJSON = getWorlds();
+        setWorldsListByJSON(worldsJSON);
+    }, []);
     
     //Functions
-    function setWorldsListByAPI(){
-        const getWorldsUrlAPI = "http://localhost/API's/Mine-Locations/getWorlds.php"
-        fetch(getWorldsUrlAPI)
-        .then((res) => res.json())
-        .then((worlds) => setWorldsList(worlds.map(world =>
+    async function getWorlds(){
+        const getWorldsUrlAPI = "http://localhost/API's/Mine-Locations/getWorlds.php";
+
+        return await fetch(getWorldsUrlAPI).then((res) => res.json());
+    }
+
+    function setWorldsListByJSON(worlds){
+        setWorldsList(worlds.map(world =>
             <option key={world.pk_id_world} value={world.pk_id_world}>{world.nm_world}</option>
-        )))
+        ))
     }
 
     return(
@@ -28,7 +34,10 @@ export default function Header(props){
                 New world!
             </button>
 
-            {isPopupActive && <NewWorldPopup popupActiveController={setPopupActive} updateWorldList={setWorldsListByAPI}/>}
+            {isPopupActive && <NewWorldPopup popupActiveController={setPopupActive} updateWorldList={() => {
+                let worldsJSON = getWorlds();
+                setWorldsListByJSON(worldsJSON);
+            }}/>}
         </header>
     )
 }

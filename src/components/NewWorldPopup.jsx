@@ -26,13 +26,13 @@ export default function NewWorldPopup(props){
             <h1>New World</h1>
 
             <div className="input-wrapper">
-                <label htmlFor="nm_world">Name</label>
-                <input type="text" name="nm_world" id="nm_world" ref={nmWorldRef}/>
+                <label htmlFor="nm-world">Name</label>
+                <input type="text" name="nm-world" id="nm-world" ref={nmWorldRef}/>
             </div>
 
             <div className="input-wrapper">
-                <label htmlFor="cd_seed">Seed</label>
-                <input type="text" name="cd_seed" id="cd_seed" ref={cdSeedRef}/>
+                <label htmlFor="cd-seed">Seed</label>
+                <input type="text" name="cd-seed" id="cd-seed" ref={cdSeedRef}/>
             </div>
 
             <div className="btn-wrapper">
