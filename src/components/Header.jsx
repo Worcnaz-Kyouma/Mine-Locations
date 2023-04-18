@@ -7,7 +7,7 @@ export default function Header(props){
     const [worldsList, setWorldsList] = useState(null);
     const [isPopupActive, setPopupActive] = useState(false);
 
-    useEffect(() => setWorldsListByAPI(), []);
+    useEffect(setWorldsListByAPI, []);
     
     //Functions
     function setWorldsListByAPI(){
