@@ -7,16 +7,14 @@ export default function Header(props){
     const [worldsList, setWorldsList] = useState(null);
     const [isPopupActive, setPopupActive] = useState(false);
 
-    useEffect(() => {
-        let worldsJSON = getWorlds();
-        setWorldsListByJSON(worldsJSON);
-    }, []);
+    useEffect(setWorldsListByAPI, []);
     
     //Functions
-    async function getWorlds(){
-        const getWorldsUrlAPI = "http://localhost/API's/Mine-Locations/getWorlds.php";
-
-        return await fetch(getWorldsUrlAPI).then((res) => res.json());
+    function setWorldsListByAPI(){
+        const getWorldsUrlAPI = "http://localhost/API's/Mine-Locations/getWorlds.php"
+        fetch(getWorldsUrlAPI)
+        .then((res) => res.json())
+        .then(setWorldsListByJSON)
     }
 
     function setWorldsListByJSON(worlds){
@@ -27,17 +25,15 @@ export default function Header(props){
 
     return(
         <header>
-            <select name="worldsSelector" id="worlds-selector" onChange={props.onChangeWorld}>
+            <select name="worldsSelector" id="worlds-selector" defaultValue={"blank"} onChange={props.onChangeWorld}>
+                <option hidden disabled value="blank"></option>
                 {worldsList}
             </select>
             <button onClick={()=> setPopupActive(true)}>
                 New world!
             </button>
 
-            {isPopupActive && <NewWorldPopup popupActiveController={setPopupActive} updateWorldList={() => {
-                let worldsJSON = getWorlds();
-                setWorldsListByJSON(worldsJSON);
-            }}/>}
+            {isPopupActive && <NewWorldPopup popupActiveController={setPopupActive} updateWorldList={setWorldsListByAPI}/>}
         </header>
     )
 }

@@ -10,6 +10,7 @@ export default function Location(props){
     const zAxisRef = useRef(null);
 
     function createNewLocation(){
+        //set key with idlocation
         setPkIdLocation(4);
     }
 
@@ -20,23 +21,23 @@ export default function Location(props){
             <span>ID {props.pkIdLocation}</span>
 
             <div className="input-wrapper">
-                <label htmlFor="nm_location">Location</label>
-                <input type="text" name="nm_location" id="nm_location" value={props.nmLocation} ref={nmLocationRef}/>
+                <label htmlFor="nm-location">Location</label>
+                <input type="text" name="nm-location" id="nm-location" defaultValue={props.nmLocation} ref={nmLocationRef}/>
             </div>
 
             <div className="input-wrapper">
-                <label htmlFor="x_axis">X-Axis</label>
-                <input type="text" name="x_axis" id="x_axis" value={props.xAxis} ref={xAxisRef}/>
+                <label htmlFor="x-axis">X-Axis</label>
+                <input type="text" name="x-axis" id="x-axis" defaultValue={props.xAxis} ref={xAxisRef}/>
             </div>
 
             <div className="input-wrapper">
-                <label htmlFor="y_axis">Y-Axis</label>
-                <input type="text" name="y_axis" id="y_axis" value={props.yAxis} ref={yAxisRef}/>
+                <label htmlFor="y-axis">Y-Axis</label>
+                <input type="text" name="y-axis" id="y-axis" defaultValue={props.yAxis} ref={yAxisRef}/>
             </div>
 
             <div className="input-wrapper">
-                <label htmlFor="z_axis">Z-Axis</label>
-                <input type="text" name="z_axis" id="z_axis" zAxis={props.zAxis} ref={zAxisRef}/>
+                <label htmlFor="z-axis">Z-Axis</label>
+                <input type="text" name="z-axis" id="z-axis" defaultValue={props.zAxis} ref={zAxisRef}/>
             </div>
 
             <button>
@@ -46,7 +47,7 @@ export default function Location(props){
           ) : (
             <div className="raw-cell" onClick={()=>{
                 createNewLocation();
-                //props.updateLocationList();
+                //props.updateList;
             }}>
                 <span>+</span>
             </div>
