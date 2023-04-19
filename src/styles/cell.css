@@ -1,0 +1,71 @@
+.location-cell, .raw-cell{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 80%;
+    height: 80px;
+
+    margin: auto;
+
+    background-color: rgb(243, 243, 231);
+
+    margin-bottom: 15px;
+}
+
+/*Location-cell*/
+.input-wrapper{
+    flex-grow: 0;
+}
+
+.location-cell span{
+    border: 1px solid black;
+    border-radius: 100px;
+
+    padding: 5px 15px 5px 15px;
+
+    box-shadow: 1px 1px 5px 1px inset rgba(0, 0, 0, 0.70);
+}
+
+.input-wrapper input{
+    margin-top: 4px;
+    
+    border: 1px solid black;
+    border-radius: 100px;
+
+    padding: 5px 15px 5px 15px;
+
+    box-shadow: 1px 1px 3px 1px inset rgba(0, 0, 0, 0.74);
+}
+
+button{
+    border: 1px solid black;
+    border-radius: 0px;
+
+    padding: 5px 15px 5px 15px;
+
+    cursor: pointer;
+
+    transition: all 0.2s;
+}
+
+button:hover{
+    filter: brightness(95%);
+}
+
+button:active{
+    filter: brightness(88%);
+}
+
+#nm-location{
+    width: 250px;
+}
+
+#x-axis, #y-axis, #z-axis{
+    width: 100px;
+}
+
+/*Raw-cell*/
+.raw-cell span{
+    font-size: 20px;
+}

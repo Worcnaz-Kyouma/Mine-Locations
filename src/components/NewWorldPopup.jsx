@@ -3,13 +3,13 @@ import { useRef } from "react"
 import "../styles/newworldpopup.css"
 
 export default function NewWorldPopup(props){
-    const nmWorldRef = useRef(null);
-    const cdSeedRef = useRef(null);
+    const nmWorldDOMRef = useRef(null);
+    const cdSeedDOMRef = useRef(null);
 
     function persistNewWorld(){
         const newWorld = {
-            nm_world: nmWorldRef.current.value,
-            cd_seed: cdSeedRef.current.value
+            nm_world: nmWorldDOMRef.current.value,
+            cd_seed: cdSeedDOMRef.current.value
         }
 
         fetch("http://localhost/API's/Mine-Locations/postNewWorld.php", {
@@ -27,19 +27,19 @@ export default function NewWorldPopup(props){
 
             <div className="input-wrapper">
                 <label htmlFor="nm-world">Name</label>
-                <input type="text" name="nm-world" id="nm-world" ref={nmWorldRef}/>
+                <input type="text" name="nm-world" id="nm-world" ref={nmWorldDOMRef}/>
             </div>
 
             <div className="input-wrapper">
                 <label htmlFor="cd-seed">Seed</label>
-                <input type="text" name="cd-seed" id="cd-seed" ref={cdSeedRef}/>
+                <input type="text" name="cd-seed" id="cd-seed" ref={cdSeedDOMRef}/>
             </div>
 
             <div className="btn-wrapper">
                 <button onClick={() => props.popupActiveController(false)}>Cancel</button>
                 <button onClick={() => {
                     persistNewWorld();
-                    props.updateWorldList();
+                    props.updateWorldsList();
                     props.popupActiveController(false);
                 }}>Submit</button>
             </div>

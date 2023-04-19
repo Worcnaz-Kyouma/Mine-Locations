@@ -33,7 +33,7 @@ export default function Header(props){
                 New world!
             </button>
 
-            {isPopupActive && <NewWorldPopup popupActiveController={setPopupActive} updateWorldList={setWorldsListByAPI}/>}
+            {isPopupActive && <NewWorldPopup popupActiveController={setPopupActive} updateWorldsList={setWorldsListByAPI}/>}
         </header>
     )
 }
