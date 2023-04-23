@@ -1,3 +1,11 @@
-//https://www.coreycleary.me/project-structure-for-an-express-rest-api-when-there-is-no-standard-way
+const server = require('./config/express')();
+const port = server.get('port');
+const routes = require('./api/routes')
 
-//Que banco usar e como sera a comunicação?
+server.get('/', (req, res) => res.send('EPK! Api is working'))
+
+server.use('/', routes);
+
+server.listen(port, () => {
+    console.log("Servidor rodando na porta " + port)
+});
