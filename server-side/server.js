@@ -1,4 +1,4 @@
-const server = require('./config/express')();
+const server = require('./config/express');
 const port = server.get('port');
 const routes = require('./api/routes')
 

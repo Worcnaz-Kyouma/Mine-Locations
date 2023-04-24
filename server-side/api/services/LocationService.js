@@ -11,7 +11,7 @@ function updateLocation(locationJSON){
     locationJSON = rest;
 
     oldLocationPromise.then(oldLocation => {
-        oldLocation = locationJSON
+        oldLocation.set(locationJSON);
         oldLocation.save();
     })
 }
@@ -26,7 +26,7 @@ function getLocationsOfWorld(fkIdWorld){
 
 function deleteLocation(pkIdLocation){
     const locationPromise = Location.findByPk(pkIdLocation);
-    locationPromise.then(location => location.destroy());
+    locationPromise.then(location => location!=null && location.destroy());
 }
 
 module.exports = {

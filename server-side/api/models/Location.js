@@ -8,6 +8,10 @@ const Location = sequelize.define('Location', {
         primaryKey: true
     },
 
+    fkIdWorld: {
+        type: DataTypes.INTEGER
+    },
+
     nmLocation: {
         type: DataTypes.STRING,
         defaultValue: 'Nameless',

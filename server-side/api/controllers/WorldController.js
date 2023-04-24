@@ -1,9 +1,9 @@
-const { worldService } = require('../services/WorldService');
+const worldService = require('../services/WorldService');
 
-function getWorlds(req, res){
+async function getWorlds(req, res){
     try {
-        res.send(worldService.getWorlds());
-        res.sendStatus(201)
+        res.status(200);
+        res.send(await worldService.getWorlds());
     } catch(e) {
         console.log(e.message);
         res.sendStatus(500);
