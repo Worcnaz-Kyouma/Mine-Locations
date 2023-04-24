@@ -11,7 +11,7 @@ export default function Header(props){
     
     //Functions
     function setWorldsListByAPI(){
-        const getWorldsUrlAPI = "http://localhost/API's/Mine-Locations/getWorlds.php"
+        const getWorldsUrlAPI = "http://localhost:6969/worlds"
         fetch(getWorldsUrlAPI)
         .then((res) => res.json())
         .then(setWorldsListByJSON)
@@ -19,14 +19,14 @@ export default function Header(props){
 
     function setWorldsListByJSON(worlds){
         setWorldsList(worlds.map(world =>
-            <option key={world.pk_id_world} value={world.pk_id_world}>{world.nm_world}</option>
+            <option key={world.pkIdWorld} value={world.pkIdWorld}>{world.nmWorld}</option>
         ))
     }
 
     return(
         <header>
             <select name="worldsSelector" id="worlds-selector" defaultValue={"blank"} onChange={props.onChangeWorld}>
-                <option hidden disabled value="blank"></option>
+                <option key="0" hidden disabled value="blank"></option>
                 {worldsList}
             </select>
             <button onClick={()=> setPopupActive(true)}>

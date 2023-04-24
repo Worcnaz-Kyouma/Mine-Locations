@@ -11,3 +11,8 @@ header{
     color: white;
     background-color: rgb(55, 55, 55);
 }
+
+select{
+    width: 100px;
+    margin-right: 15px;
+}
