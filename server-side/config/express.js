@@ -2,13 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const port = 6969;
 
-module.exports = () => {
-    const app = express();
+function createServer(){
+    const server = express();
 
-    app.set('port', port);
+    server.set('port', port);
 
-    app.use(cors());
-    app.use(express.json());
+    server.use(cors());
+    server.use(express.json());
 
-    return app;
+    return server;
 }
+
+module.exports = createServer();
