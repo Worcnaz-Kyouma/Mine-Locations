@@ -35,9 +35,9 @@ export default function NewWorldPopup(props){
 
             <div className="btn-wrapper">
                 <button onClick={() => props.popupActiveController(false)}>Cancel</button>
-                <button onClick={async() => {
-                    await persistNewWorld();
-                    props.updateWorldsList();
+                <button onClick={() => {
+                    persistNewWorld();
+                    setTimeout(props.updateWorldsList, 80) ;
                     props.popupActiveController(false);
                 }}>Submit</button>
             </div>

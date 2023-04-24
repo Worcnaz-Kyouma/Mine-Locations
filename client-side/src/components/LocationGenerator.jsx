@@ -12,9 +12,9 @@ export default function LocationGenerator(props){
     }
 
     return(
-        <div className="raw-cell" onClick={async() => {
-            await persistLocation(props.fkIdWorld);
-            props.updateLocationsList();
+        <div className="raw-cell" onClick={() => {
+            persistLocation(props.fkIdWorld);
+            setTimeout(props.updateLocationsList, 80);
         }}>
             <span>+</span>
         </div>
