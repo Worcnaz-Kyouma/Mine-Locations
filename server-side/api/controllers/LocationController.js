@@ -22,7 +22,7 @@ function updateLocation(req, res){
 
 function getLocationsOfWorld(req, res){
     try {
-        locationService.getLocationsOfWorld(req.params.id);
+        res.send(locationService.getLocationsOfWorld(req.params.id));
         res.status(201);
     } catch (e) {
         console.log(e.message);
