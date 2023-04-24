@@ -26,7 +26,7 @@ export default function Header(props){
     return(
         <header>
             <select name="worldsSelector" id="worlds-selector" defaultValue={"blank"} onChange={props.onChangeWorld}>
-                <option key="0" hidden disabled value="blank"></option>
+                <option hidden disabled value="blank"></option>
                 {worldsList}
             </select>
             <button onClick={()=> setPopupActive(true)}>

@@ -11,29 +11,25 @@ export default function Location(props){
     function updateLocation(){
         //Melhorar esta função para diminuir numero de requisições
         const updatedLocation = { 
-            pk_id_location: props.pkIdLocation,
-            fk_id_world: props.fkIdWorld,
-            nm_location: nmLocationDOMRef.current.value,
-            x_axis: xAxisDOMRef.current.value,
-            y_axis: yAxisDOMRef.current.value,
-            z_axis: zAxisDOMRef.current.value
+            pkIdLocation: props.pkIdLocation,
+            fkIdWorld: props.fkIdWorld,
+            nmLocation: nmLocationDOMRef.current.value,
+            xAxis: xAxisDOMRef.current.value,
+            yAxis: yAxisDOMRef.current.value,
+            zAxis: zAxisDOMRef.current.value
         }
 
-        fetch("http://localhost/API's/Mine-Locations/updateLocation.php", {
+        fetch("http://localhost:6969/locations", {
             method: "PUT",
             body: JSON.stringify(updatedLocation),
             headers: {"Content-type": "application/json; charset=UTF-8"}
           })
-          .then(res => res.json())
-          .then(location => console.log(location));
     }
 
-    function deleteLocation(){
-        fetch("http://localhost/API's/Mine-Locations/deleteLocation.php?pk_id_location=" + props.pkIdLocation, {
+    function deleteLocation(pkIdLocation){
+        return fetch("http://localhost:6969/locations/" + pkIdLocation, {
             method: "DELETE"
           })
-          .then(response => response.json()) 
-          .then(json => console.log(json));
     }
 
     return(
@@ -62,8 +58,8 @@ export default function Location(props){
         </div>
 
         <button onClick={() => {
-            deleteLocation();
-            props.updateLocationsList();
+            deleteLocation(props.pkIdLocation);
+            setTimeout(props.updateLocationsList, 80);
         }}>
             Delete
         </button>

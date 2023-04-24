@@ -8,7 +8,7 @@ export default function Home() {
   const [locationsList, setLocationsList] = useState(null);
  
   function setLocationsListByAPI(fkIdWorld){
-    const getLocationsUrlAPI = "http://localhost/API's/Mine-Locations/getLocations.php?fk_id_world=" + fkIdWorld
+    const getLocationsUrlAPI = "http://localhost:6969/locations/" + fkIdWorld
     fetch(getLocationsUrlAPI)
     .then((res) => res.json())
     .then(setLocationsListByJSON)
@@ -17,14 +17,14 @@ export default function Home() {
   function setLocationsListByJSON(locations){
     setLocationsList(locations.map((location) => 
       <Location 
-        key = {location.fk_id_world + " " + location.pk_id_location}
-        pkIdLocation = {location.pk_id_location} 
-        fkIdWorld = {location.fk_id_world}
-        nmLocation = {location.nm_location} 
-        xAxis = {location.x_axis} 
-        yAxis = {location.y_axis}
-        zAxis = {location.z_axis}
-        updateLocationsList = {() => setLocationsListByAPI(location.fk_id_world)}
+        key = {location.fkIdWorld + " " + location.pkIdLocation}
+        pkIdLocation = {location.pkIdLocation} 
+        fkIdWorld = {location.fkIdWorld}
+        nmLocation = {location.nmLocation} 
+        xAxis = {location.xAxis} 
+        yAxis = {location.yAxis}
+        zAxis = {location.zAxis}
+        updateLocationsList = {() => setLocationsListByAPI(location.fkIdWorld)}
       />
     ));
   }

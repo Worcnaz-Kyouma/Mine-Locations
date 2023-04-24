@@ -8,17 +8,15 @@ export default function NewWorldPopup(props){
 
     function persistNewWorld(){
         const newWorld = {
-            nm_world: nmWorldDOMRef.current.value,
-            cd_seed: cdSeedDOMRef.current.value
+            nmWorld: nmWorldDOMRef.current.value,
+            cdSeed: cdSeedDOMRef.current.value
         }
 
-        fetch("http://localhost/API's/Mine-Locations/postNewWorld.php", {
+        return fetch("http://localhost:6969/worlds", {
             method: "POST",
             body: JSON.stringify(newWorld),
             headers: {"Content-type": "application/json; charset=UTF-8"}
           })
-          .then(response => response.json()) 
-          .then(json => console.log(json));
     }
 
     return(
@@ -37,8 +35,8 @@ export default function NewWorldPopup(props){
 
             <div className="btn-wrapper">
                 <button onClick={() => props.popupActiveController(false)}>Cancel</button>
-                <button onClick={() => {
-                    persistNewWorld();
+                <button onClick={async() => {
+                    await persistNewWorld();
                     props.updateWorldsList();
                     props.popupActiveController(false);
                 }}>Submit</button>
