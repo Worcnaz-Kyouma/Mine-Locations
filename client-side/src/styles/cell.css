@@ -3,7 +3,9 @@
     justify-content: space-around;
     align-items: center;
 
-    width: 80%;
+    min-width: 490px;
+    width: 90%;
+
     height: 80px;
 
     margin: auto;
@@ -16,6 +18,7 @@
 /*Location-cell*/
 .input-wrapper{
     flex-grow: 0;
+    padding: 0px 10px 0px 10px;
 }
 
 .location-cell span{
@@ -58,11 +61,15 @@ button:active{
 }
 
 #nm-location{
-    width: 250px;
+    width: 70%;
+    min-width: 75px;
+    max-width: 250px;
 }
 
 #x-axis, #y-axis, #z-axis{
-    width: 100px;
+    width: 30%;
+    min-width: 25px;
+    max-width: 250px;
 }
 
 /*Raw-cell*/
