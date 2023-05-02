@@ -8,6 +8,8 @@ export default function Location(props){
     const yAxisDOMRef = useRef(null);
     const zAxisDOMRef = useRef(null);
 
+    var updateTimeout;
+
     function updateLocation(){
         //Melhorar esta função para diminuir numero de requisições
         const updatedLocation = { 
@@ -19,11 +21,14 @@ export default function Location(props){
             zAxis: zAxisDOMRef.current.value
         }
 
-        fetch("http://localhost:6969/locations", {
-            method: "PUT",
-            body: JSON.stringify(updatedLocation),
-            headers: {"Content-type": "application/json; charset=UTF-8"}
-          })
+        clearTimeout(updateTimeout);
+        updateTimeout = setTimeout(() => {
+            fetch("http://localhost:6969/locations", {
+                method: "PUT",
+                body: JSON.stringify(updatedLocation),
+                headers: {"Content-type": "application/json; charset=UTF-8"}
+              })
+        }, 5000);
     }
 
     function deleteLocation(pkIdLocation){
